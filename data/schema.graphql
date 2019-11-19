@@ -1,0 +1,14 @@
+type Query {
+  getLocations(input: LocationsInput!): [Location!]!
+}
+
+type Location {
+  id: ID!
+  slug: String!
+  name: String!
+  type: String!
+}
+
+type LocationsInput {
+  value: String!
+}
