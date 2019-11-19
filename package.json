@@ -1,0 +1,21 @@
+{
+  "name": "nextjs-with-relay-modern",
+  "version": "0.1.0",
+  "description": "Handling SSR with Relay Modern inside NextJS project",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Thibault Boursier"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "next": "^9.1.4",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  }
+}
