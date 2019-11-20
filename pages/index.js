@@ -1,9 +1,10 @@
-import { JobsWithQueryRenderer } from "../components/Jobs";
+import Link from "next/link";
+import { JobsWithQueryRenderer } from "../components/JobList";
 
-const Index = ({ message }) => <JobsWithQueryRenderer />;
-
-Index.getInitialProps = () => ({
-  message: "Simple page"
-});
+const Index = ({ message }) => (
+  <>
+    <Link href="/jobs">See jobs</Link>
+  </>
+);
 
 export default Index;

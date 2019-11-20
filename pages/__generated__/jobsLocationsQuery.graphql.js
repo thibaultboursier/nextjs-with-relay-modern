@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 02635745eefd93806925dc0bf68f8540
+ * @relayHash eb2816a0a3f37fc0dadcf5abfd4ab864
  */
 
 /* eslint-disable */
@@ -13,23 +13,23 @@ type Location_location$ref = any;
 export type LocationsInput = {|
   value: string
 |};
-export type JobsLocationsQueryVariables = {|
+export type jobsLocationsQueryVariables = {|
   input: LocationsInput
 |};
-export type JobsLocationsQueryResponse = {|
+export type jobsLocationsQueryResponse = {|
   +locations: $ReadOnlyArray<{|
     +$fragmentRefs: Location_location$ref
   |}>
 |};
-export type JobsLocationsQuery = {|
-  variables: JobsLocationsQueryVariables,
-  response: JobsLocationsQueryResponse,
+export type jobsLocationsQuery = {|
+  variables: jobsLocationsQueryVariables,
+  response: jobsLocationsQueryResponse,
 |};
 */
 
 
 /*
-query JobsLocationsQuery(
+query jobsLocationsQuery(
   $input: LocationsInput!
 ) {
   locations(input: $input) {
@@ -64,7 +64,7 @@ return {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
-    "name": "JobsLocationsQuery",
+    "name": "jobsLocationsQuery",
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": (v0/*: any*/),
@@ -89,7 +89,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "JobsLocationsQuery",
+    "name": "jobsLocationsQuery",
     "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
@@ -121,13 +121,13 @@ return {
   },
   "params": {
     "operationKind": "query",
-    "name": "JobsLocationsQuery",
+    "name": "jobsLocationsQuery",
     "id": null,
-    "text": "query JobsLocationsQuery(\n  $input: LocationsInput!\n) {\n  locations(input: $input) {\n    ...Location_location\n    id\n  }\n}\n\nfragment Location_location on Location {\n  id\n  name\n}\n",
+    "text": "query jobsLocationsQuery(\n  $input: LocationsInput!\n) {\n  locations(input: $input) {\n    ...Location_location\n    id\n  }\n}\n\nfragment Location_location on Location {\n  id\n  name\n}\n",
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '687d2808b98bf50e700035c528db5442';
+(node/*: any*/).hash = '4385c648d7271821e4655197a52b5432';
 module.exports = node;
