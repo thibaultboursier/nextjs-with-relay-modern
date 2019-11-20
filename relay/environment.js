@@ -19,12 +19,9 @@ function fetchQuery(operation, variables) {
 }
 
 export const initEnvironment = ({ records = {} } = {}) => {
-  // Create a network layer from the fetch function
   const network = Network.create(fetchQuery);
   const store = new Store(new RecordSource(records));
 
-  // Make sure to create a new Relay environment for every server-side request so that data
-  // isn't shared between connections (which would be bad)
   if (!process.browser) {
     return new Environment({
       network,
@@ -32,7 +29,6 @@ export const initEnvironment = ({ records = {} } = {}) => {
     });
   }
 
-  // reuse Relay environment on client-side
   if (!environment) {
     environment = new Environment({
       network,

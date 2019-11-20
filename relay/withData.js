@@ -1,7 +1,6 @@
 import React from "react";
 import { fetchQuery, ReactRelayContext } from "react-relay";
 import { initEnvironment } from "./environment";
-import { RelayProvider } from "./Provider";
 
 export const withData = (ComposedComponent, options = {}) => {
   return class WithData extends React.Component {
