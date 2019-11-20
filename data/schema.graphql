@@ -1,5 +1,5 @@
 type Query {
-  getLocations(input: LocationsInput!): [Location!]!
+  locations(input: LocationsInput!): [Location!]!
 }
 
 type Location {
@@ -9,6 +9,6 @@ type Location {
   type: String!
 }
 
-type LocationsInput {
+input LocationsInput {
   value: String!
 }

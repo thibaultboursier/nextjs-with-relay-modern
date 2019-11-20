@@ -20,6 +20,8 @@
     "react-dom": "^16.12.0"
   },
   "devDependencies": {
+    "babel-plugin-macros": "^2.6.2",
+    "babel-plugin-relay": "^7.1.0",
     "graphql": "^14.5.8",
     "react-relay": "^7.1.0",
     "relay-compiler": "^7.1.0",

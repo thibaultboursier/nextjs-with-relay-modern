@@ -1,4 +1,6 @@
-const Index = ({ message }) => <div>{message}</div>;
+import { Jobs } from "../components/Jobs";
+
+const Index = ({ message }) => <Jobs />;
 
 Index.getInitialProps = () => ({
   message: "Simple page"
