@@ -1,19 +1,32 @@
 import React from "react";
 import { QueryRenderer } from "react-relay";
 import environment from "../relay.env";
+import { LocationWithFragment } from "./Location";
 
 const graphql = require("babel-plugin-relay/macro");
 
-export const Jobs = () => (
+export const Jobs = ({ locations }) => (
+  <>
+    <h3>Jobs locations</h3>
+    <ul>
+      {locations &&
+        locations.map((location, index) => (
+          <LocationWithFragment
+            key={location.id || index}
+            location={location}
+          />
+        ))}
+    </ul>
+  </>
+);
+
+export const JobsWithQueryRenderer = () => (
   <QueryRenderer
     environment={environment}
     query={graphql`
       query JobsLocationsQuery($input: LocationsInput!) {
         locations(input: $input) {
-          id
-          slug
-          name
-          type
+          ...Location_location
         }
       }
     `}
@@ -24,7 +37,6 @@ export const Jobs = () => (
     }}
     render={({ error, props }) => {
       if (error) {
-        console.log("sdsdsd", error);
         return <div>Error!</div>;
       }
 
@@ -32,16 +44,7 @@ export const Jobs = () => (
         return <div>Loading...</div>;
       }
 
-      return (
-        <>
-          <h3>Jobs locations</h3>
-          <ul>
-            {props.locations.map(({ id, name }) => (
-              <li key={id}>{name}</li>
-            ))}
-          </ul>
-        </>
-      );
+      return <Jobs locations={props.locations} />;
     }}
   />
 );

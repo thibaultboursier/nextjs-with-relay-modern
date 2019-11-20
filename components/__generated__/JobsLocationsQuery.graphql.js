@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash c2ed0414c482be5a77e8911fc8f95499
+ * @relayHash 02635745eefd93806925dc0bf68f8540
  */
 
 /* eslint-disable */
@@ -9,6 +9,7 @@
 
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
+type Location_location$ref = any;
 export type LocationsInput = {|
   value: string
 |};
@@ -17,10 +18,7 @@ export type JobsLocationsQueryVariables = {|
 |};
 export type JobsLocationsQueryResponse = {|
   +locations: $ReadOnlyArray<{|
-    +id: string,
-    +slug: string,
-    +name: string,
-    +type: string,
+    +$fragmentRefs: Location_location$ref
   |}>
 |};
 export type JobsLocationsQuery = {|
@@ -35,11 +33,14 @@ query JobsLocationsQuery(
   $input: LocationsInput!
 ) {
   locations(input: $input) {
+    ...Location_location
     id
-    slug
-    name
-    type
   }
+}
+
+fragment Location_location on Location {
+  id
+  name
 }
 */
 
@@ -54,49 +55,9 @@ var v0 = [
 ],
 v1 = [
   {
-    "kind": "LinkedField",
-    "alias": null,
-    "name": "locations",
-    "storageKey": null,
-    "args": [
-      {
-        "kind": "Variable",
-        "name": "input",
-        "variableName": "input"
-      }
-    ],
-    "concreteType": "Location",
-    "plural": true,
-    "selections": [
-      {
-        "kind": "ScalarField",
-        "alias": null,
-        "name": "id",
-        "args": null,
-        "storageKey": null
-      },
-      {
-        "kind": "ScalarField",
-        "alias": null,
-        "name": "slug",
-        "args": null,
-        "storageKey": null
-      },
-      {
-        "kind": "ScalarField",
-        "alias": null,
-        "name": "name",
-        "args": null,
-        "storageKey": null
-      },
-      {
-        "kind": "ScalarField",
-        "alias": null,
-        "name": "type",
-        "args": null,
-        "storageKey": null
-      }
-    ]
+    "kind": "Variable",
+    "name": "input",
+    "variableName": "input"
   }
 ];
 return {
@@ -107,23 +68,66 @@ return {
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": (v0/*: any*/),
-    "selections": (v1/*: any*/)
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "locations",
+        "storageKey": null,
+        "args": (v1/*: any*/),
+        "concreteType": "Location",
+        "plural": true,
+        "selections": [
+          {
+            "kind": "FragmentSpread",
+            "name": "Location_location",
+            "args": null
+          }
+        ]
+      }
+    ]
   },
   "operation": {
     "kind": "Operation",
     "name": "JobsLocationsQuery",
     "argumentDefinitions": (v0/*: any*/),
-    "selections": (v1/*: any*/)
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "locations",
+        "storageKey": null,
+        "args": (v1/*: any*/),
+        "concreteType": "Location",
+        "plural": true,
+        "selections": [
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "id",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "name",
+            "args": null,
+            "storageKey": null
+          }
+        ]
+      }
+    ]
   },
   "params": {
     "operationKind": "query",
     "name": "JobsLocationsQuery",
     "id": null,
-    "text": "query JobsLocationsQuery(\n  $input: LocationsInput!\n) {\n  locations(input: $input) {\n    id\n    slug\n    name\n    type\n  }\n}\n",
+    "text": "query JobsLocationsQuery(\n  $input: LocationsInput!\n) {\n  locations(input: $input) {\n    ...Location_location\n    id\n  }\n}\n\nfragment Location_location on Location {\n  id\n  name\n}\n",
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '41a28232381756ad54602f7173025101';
+(node/*: any*/).hash = '687d2808b98bf50e700035c528db5442';
 module.exports = node;

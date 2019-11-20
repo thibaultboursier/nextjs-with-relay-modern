@@ -1,6 +1,6 @@
-import { Jobs } from "../components/Jobs";
+import { JobsWithQueryRenderer } from "../components/Jobs";
 
-const Index = ({ message }) => <Jobs />;
+const Index = ({ message }) => <JobsWithQueryRenderer />;
 
 Index.getInitialProps = () => ({
   message: "Simple page"
