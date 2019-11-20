@@ -1,4 +1,5 @@
 import { Environment, Network, RecordSource, Store } from "relay-runtime";
+import fetch from "isomorphic-unfetch";
 
 function fetchQuery(operation, variables) {
   return fetch("https://api.graphql.jobs/", {

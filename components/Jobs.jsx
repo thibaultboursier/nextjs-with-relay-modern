@@ -24,6 +24,7 @@ export const Jobs = () => (
     }}
     render={({ error, props }) => {
       if (error) {
+        console.log("sdsdsd", error);
         return <div>Error!</div>;
       }
 
