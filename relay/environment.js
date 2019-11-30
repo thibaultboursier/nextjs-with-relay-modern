@@ -1,9 +1,27 @@
-import { Environment, Network, RecordSource, Store } from "relay-runtime";
+import {
+  Environment,
+  Network,
+  QueryResponseCache,
+  RecordSource,
+  Store
+} from "relay-runtime";
 import fetch from "isomorphic-unfetch";
 
+const oneMinute = 60 * 1000;
+const cache = new QueryResponseCache({ size: 250, ttl: oneMinute });
 let environment = null;
 
-function fetchQuery(operation, variables) {
+function fetchQuery(operation, variables, cacheConfig) {
+  const queryID = operation.text;
+  const isMutation = operation.operationKind === "mutation";
+  const isQuery = operation.operationKind === "query";
+  const forceFetch = cacheConfig && cacheConfig.force;
+  const fromCache = cache.get(queryID, variables);
+
+  if (isQuery && fromCache !== null && !forceFetch) {
+    return fromCache;
+  }
+
   return fetch(
     "https://api.digitransit.fi/routing/v1/routers/finland/index/graphql",
     {
@@ -16,9 +34,20 @@ function fetchQuery(operation, variables) {
         variables
       })
     }
-  ).then(response => {
-    return response.json();
-  });
+  )
+    .then(response => {
+      return response.json();
+    })
+    .then(json => {
+      if (isQuery && json) {
+        cache.set(queryID, variables, json);
+      }
+      if (isMutation) {
+        cache.clear();
+      }
+
+      return json;
+    });
 }
 
 export const initEnvironment = ({ records = {} } = {}) => {
