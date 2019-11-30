@@ -4,10 +4,13 @@
   "description": "Handling SSR with Relay Modern inside NextJS project",
   "main": "index.js",
   "scripts": {
-    "dev": "next",
+    "dev": "npm run relay && next",
     "build": "next build",
     "start": "next start",
-    "relay": "relay-compiler --src . --schema ./data/schema.graphql --extensions js jsx"
+    "relay": "npm run relay:schema && npm run relay:compile",
+    "relay:compile": "relay-compiler",
+    "relay:compile-watch": "relay-compiler --watch",
+    "relay:schema": "graphql get-schema -e dev"
   },
   "keywords": [],
   "author": {

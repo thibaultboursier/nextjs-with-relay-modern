@@ -1,10 +1,12 @@
 import React from "react";
 import { fetchQuery, ReactRelayContext } from "react-relay";
 import { initEnvironment } from "./environment";
+import { getQueryRecordsFromEnvironment, getOperationFromQuery } from "./utils";
 
 export const withData = (ComposedComponent, options = {}) => {
   return class WithData extends React.Component {
-    static displayName = `WithData(${ComposedComponent.displayName})`;
+    static displayName = `WithData(${ComposedComponent.displayName ||
+      "ComposedComponent"})`;
 
     static async getInitialProps(ctx) {
       let composedInitialProps = {};
@@ -13,9 +15,10 @@ export const withData = (ComposedComponent, options = {}) => {
         composedInitialProps = await ComposedComponent.getInitialProps(ctx);
       }
 
+      const environment = initEnvironment();
       let queryProps = {};
       let queryRecords = {};
-      const environment = initEnvironment();
+      let operationToRetain;
 
       if (options.query) {
         queryProps = await fetchQuery(
@@ -23,16 +26,18 @@ export const withData = (ComposedComponent, options = {}) => {
           options.query,
           options.variables || {}
         );
-        queryRecords = environment
-          .getStore()
-          .getSource()
-          .toJSON();
+        queryRecords = getQueryRecordsFromEnvironment(environment);
+        operationToRetain = getOperationFromQuery(
+          options.query,
+          options.variables
+        );
       }
 
       return {
         ...composedInitialProps,
         ...queryProps,
-        queryRecords
+        queryRecords,
+        operationToRetain
       };
     }
 

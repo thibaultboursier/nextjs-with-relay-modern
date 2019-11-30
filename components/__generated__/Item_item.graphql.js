@@ -9,25 +9,26 @@
 /*::
 import type { ReaderFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
-declare export opaque type Location_location$ref: FragmentReference;
-declare export opaque type Location_location$fragmentType: Location_location$ref;
-export type Location_location = {|
+declare export opaque type Item_item$ref: FragmentReference;
+declare export opaque type Item_item$fragmentType: Item_item$ref;
+export type Item_item = {|
   +id: string,
+  +gtfsId: string,
   +name: string,
-  +$refType: Location_location$ref,
+  +$refType: Item_item$ref,
 |};
-export type Location_location$data = Location_location;
-export type Location_location$key = {
-  +$data?: Location_location$data,
-  +$fragmentRefs: Location_location$ref,
+export type Item_item$data = Item_item;
+export type Item_item$key = {
+  +$data?: Item_item$data,
+  +$fragmentRefs: Item_item$ref,
 };
 */
 
 
 const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
-  "name": "Location_location",
-  "type": "Location",
+  "name": "Item_item",
+  "type": "Agency",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
@@ -41,6 +42,13 @@ const node/*: ReaderFragment*/ = {
     {
       "kind": "ScalarField",
       "alias": null,
+      "name": "gtfsId",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
       "name": "name",
       "args": null,
       "storageKey": null
@@ -48,5 +56,5 @@ const node/*: ReaderFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '8171856e7f634f6845a8ab04c055e5bc';
+(node/*: any*/).hash = 'ccbbb794844c03812b0aa70d4ffb6814';
 module.exports = node;

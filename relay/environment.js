@@ -4,16 +4,19 @@ import fetch from "isomorphic-unfetch";
 let environment = null;
 
 function fetchQuery(operation, variables) {
-  return fetch("https://api.graphql.jobs/", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      query: operation.text,
-      variables
-    })
-  }).then(response => {
+  return fetch(
+    "https://api.digitransit.fi/routing/v1/routers/finland/index/graphql",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        query: operation.text,
+        variables
+      })
+    }
+  ).then(response => {
     return response.json();
   });
 }
