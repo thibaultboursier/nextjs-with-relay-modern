@@ -12,7 +12,14 @@
     "relay:compile-watch": "relay-compiler --watch",
     "relay:schema": "graphql get-schema -e dev"
   },
-  "keywords": [],
+  "keywords": [
+    "react",
+    "relay",
+    "relay-modern",
+    "ssr",
+    "next",
+    "graphql-client"
+  ],
   "author": {
     "name": "Thibault Boursier"
   },
@@ -24,6 +31,7 @@
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
     "bootstrap": "^4.4.1",
+    "graphql-cli": "^3.0.14",
     "isomorphic-unfetch": "^3.0.0",
     "next": "^9.1.4",
     "react": "^16.12.0",

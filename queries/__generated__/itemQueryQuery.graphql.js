@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash c2144f3869d63a7c0c24eae6782f58ec
+ * @relayHash 9a4d3a2be9fd165d62e2576c08c19766
  */
 
 /* eslint-disable */
@@ -9,10 +9,10 @@
 
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
-export type ItemQueryVariables = {|
+export type itemQueryQueryVariables = {|
   id: string
 |};
-export type ItemQueryResponse = {|
+export type itemQueryQueryResponse = {|
   +agency: ?{|
     +id: string,
     +phone: ?string,
@@ -20,15 +20,15 @@ export type ItemQueryResponse = {|
     +url: string,
   |}
 |};
-export type ItemQuery = {|
-  variables: ItemQueryVariables,
-  response: ItemQueryResponse,
+export type itemQueryQuery = {|
+  variables: itemQueryQueryVariables,
+  response: itemQueryQueryResponse,
 |};
 */
 
 
 /*
-query ItemQuery(
+query itemQueryQuery(
   $id: String!
 ) {
   agency(id: $id) {
@@ -100,7 +100,7 @@ return {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
-    "name": "ItemQuery",
+    "name": "itemQueryQuery",
     "type": "QueryType",
     "metadata": null,
     "argumentDefinitions": (v0/*: any*/),
@@ -108,19 +108,19 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "ItemQuery",
+    "name": "itemQueryQuery",
     "argumentDefinitions": (v0/*: any*/),
     "selections": (v1/*: any*/)
   },
   "params": {
     "operationKind": "query",
-    "name": "ItemQuery",
+    "name": "itemQueryQuery",
     "id": null,
-    "text": "query ItemQuery(\n  $id: String!\n) {\n  agency(id: $id) {\n    id\n    phone\n    timezone\n    url\n  }\n}\n",
+    "text": "query itemQueryQuery(\n  $id: String!\n) {\n  agency(id: $id) {\n    id\n    phone\n    timezone\n    url\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = 'ccc17e3884637cac6720303f95add8eb';
+(node/*: any*/).hash = '11ab6e96e49bb62240b798f54684a1e0';
 module.exports = node;

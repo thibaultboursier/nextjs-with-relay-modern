@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import { QueryRenderer, ReactRelayContext } from "react-relay";
 import graphql from "babel-plugin-relay/macro";
 
-const query = graphql`
-  query ItemQuery($id: String!) {
+export const itemQuery = graphql`
+  query itemQueryQuery($id: String!) {
     agency(id: $id) {
       id
       phone
@@ -13,13 +13,13 @@ const query = graphql`
   }
 `;
 
-const ItemQuery = ({ children, gtfsId: id }) => {
+export const ItemQueryRenderer = ({ children, gtfsId: id }) => {
   const { environment } = useContext(ReactRelayContext);
 
   return (
     <QueryRenderer
       environment={environment}
-      query={query}
+      query={itemQuery}
       render={children}
       variables={{
         id
@@ -27,5 +27,3 @@ const ItemQuery = ({ children, gtfsId: id }) => {
     />
   );
 };
-
-export default ItemQuery;

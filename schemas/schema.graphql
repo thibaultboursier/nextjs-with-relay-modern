@@ -1,5 +1,5 @@
 # source: https://api.digitransit.fi/routing/v1/routers/finland/index/graphql
-# timestamp: Sun Dec 01 2019 12:52:04 GMT+0100 (GMT+01:00)
+# timestamp: Sun Dec 01 2019 13:25:54 GMT+0100 (GMT+01:00)
 
 schema {
   query: QueryType

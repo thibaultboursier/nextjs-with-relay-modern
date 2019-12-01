@@ -4,14 +4,7 @@ import { ReactRelayContext } from "react-relay";
 import { Button, Jumbotron } from "reactstrap";
 import { withData } from "../relay/withData";
 import ItemsContainer from "../containers/ItemsContainer";
-
-const rootQuery = graphql`
-  query pagesRootQuery {
-    agencies {
-      ...ItemsContainer_items
-    }
-  }
-`;
+import { rootQuery } from "../queries/rootQuery";
 
 const IndexPage = ({ agencies, operationToRetain }) => {
   const { environment } = useContext(ReactRelayContext);

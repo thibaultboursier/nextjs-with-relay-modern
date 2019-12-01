@@ -1,18 +1,21 @@
 import React, { useCallback, useState, useContext } from "react";
 import { ListGroupItem } from "reactstrap";
-import ItemQuery from "../queries/ItemQuery";
+import ItemQuery, { ItemQueryRenderer } from "../queries/itemQuery";
 
 const Item = ({ item, isSelected, onClick }) => (
   <ListGroupItem
     action
     active={isSelected}
-    tag="a"
     href="#"
-    onClick={() => onClick(item.id)}
+    onClick={event => {
+      event.preventDefault();
+      onClick(item.id);
+    }}
+    tag="a"
   >
     {item.name}
     {isSelected && (
-      <ItemQuery gtfsId={item.gtfsId}>
+      <ItemQueryRenderer gtfsId={item.gtfsId}>
         {({ error, props }) => {
           if (error) {
             return <div>An error occured: "{error.message}"</div>;
@@ -26,7 +29,7 @@ const Item = ({ item, isSelected, onClick }) => (
             <div>&nbsp;&nbsp;&nbsp;# Timezone: {props.agency.timezone}</div>
           );
         }}
-      </ItemQuery>
+      </ItemQueryRenderer>
     )}
   </ListGroupItem>
 );

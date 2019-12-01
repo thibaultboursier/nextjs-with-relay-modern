@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 7c26038b836a80433ac6084ad072f248
+ * @relayHash 6adea4430bdd2bda190d28e44745d119
  */
 
 /* eslint-disable */
@@ -10,21 +10,21 @@
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
 type ItemsContainer_items$ref = any;
-export type pagesRootQueryVariables = {||};
-export type pagesRootQueryResponse = {|
+export type rootQueryQueryVariables = {||};
+export type rootQueryQueryResponse = {|
   +agencies: ?$ReadOnlyArray<?{|
     +$fragmentRefs: ItemsContainer_items$ref
   |}>
 |};
-export type pagesRootQuery = {|
-  variables: pagesRootQueryVariables,
-  response: pagesRootQueryResponse,
+export type rootQueryQuery = {|
+  variables: rootQueryQueryVariables,
+  response: rootQueryQueryResponse,
 |};
 */
 
 
 /*
-query pagesRootQuery {
+query rootQueryQuery {
   agencies {
     ...ItemsContainer_items
     id
@@ -47,7 +47,7 @@ const node/*: ConcreteRequest*/ = {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
-    "name": "pagesRootQuery",
+    "name": "rootQueryQuery",
     "type": "QueryType",
     "metadata": null,
     "argumentDefinitions": [],
@@ -72,7 +72,7 @@ const node/*: ConcreteRequest*/ = {
   },
   "operation": {
     "kind": "Operation",
-    "name": "pagesRootQuery",
+    "name": "rootQueryQuery",
     "argumentDefinitions": [],
     "selections": [
       {
@@ -111,12 +111,12 @@ const node/*: ConcreteRequest*/ = {
   },
   "params": {
     "operationKind": "query",
-    "name": "pagesRootQuery",
+    "name": "rootQueryQuery",
     "id": null,
-    "text": "query pagesRootQuery {\n  agencies {\n    ...ItemsContainer_items\n    id\n  }\n}\n\nfragment ItemContainer_item on Agency {\n  id\n  gtfsId\n  name\n}\n\nfragment ItemsContainer_items on Agency {\n  id\n  ...ItemContainer_item\n}\n",
+    "text": "query rootQueryQuery {\n  agencies {\n    ...ItemsContainer_items\n    id\n  }\n}\n\nfragment ItemContainer_item on Agency {\n  id\n  gtfsId\n  name\n}\n\nfragment ItemsContainer_items on Agency {\n  id\n  ...ItemContainer_item\n}\n",
     "metadata": {}
   }
 };
 // prettier-ignore
-(node/*: any*/).hash = '54659a566c40b4a1e5f1b49b43316f28';
+(node/*: any*/).hash = '2a612f6201ee1afecab7bd65be9602a5';
 module.exports = node;
