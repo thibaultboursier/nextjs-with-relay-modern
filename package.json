@@ -16,6 +16,10 @@
   "author": {
     "name": "Thibault Boursier"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thibaultboursier/nextjs-with-relay-modern.git"
+  },
   "license": "ISC",
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
