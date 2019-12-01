@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from "react";
+import { Badge, ListGroup } from "reactstrap";
 import ItemContainer from "../containers/ItemContainer";
 
 const Items = ({ items }) => {
@@ -6,17 +7,22 @@ const Items = ({ items }) => {
   const onClick = useCallback(id => setActiveItem(id), []);
 
   return (
-    <div className="list-group">
-      {items &&
-        items.map((item, index) => (
-          <ItemContainer
-            isSelected={item.id === activeItem}
-            item={item}
-            key={item.id || index}
-            onClick={onClick}
-          />
-        ))}
-    </div>
+    <>
+      <h3 className="mb-4">
+        List of items <Badge>{items.length}</Badge>
+      </h3>
+      <ListGroup>
+        {items &&
+          items.map((item, index) => (
+            <ItemContainer
+              isSelected={item.id === activeItem}
+              item={item}
+              key={item.id || index}
+              onClick={onClick}
+            />
+          ))}
+      </ListGroup>
+    </>
   );
 };
 

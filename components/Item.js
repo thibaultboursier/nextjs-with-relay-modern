@@ -1,8 +1,15 @@
 import React, { useCallback, useState, useContext } from "react";
+import { ListGroupItem } from "reactstrap";
 import ItemQuery from "../queries/ItemQuery";
 
 const Item = ({ item, isSelected, onClick }) => (
-  <li onClick={() => onClick(item.id)}>
+  <ListGroupItem
+    action
+    active={isSelected}
+    tag="a"
+    href="#"
+    onClick={() => onClick(item.id)}
+  >
     {item.name}
     {isSelected && (
       <ItemQuery gtfsId={item.gtfsId}>
@@ -21,7 +28,7 @@ const Item = ({ item, isSelected, onClick }) => (
         }}
       </ItemQuery>
     )}
-  </li>
+  </ListGroupItem>
 );
 
 export default Item;
