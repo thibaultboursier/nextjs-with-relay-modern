@@ -3,7 +3,7 @@ import { QueryRenderer, ReactRelayContext } from "react-relay";
 import graphql from "babel-plugin-relay/macro";
 
 export const itemQuery = graphql`
-  query itemQueryQuery($id: String!) {
+  query itemQuery($id: String!) {
     agency(id: $id) {
       id
       phone
