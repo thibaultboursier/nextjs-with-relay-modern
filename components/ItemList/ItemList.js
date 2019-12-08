@@ -1,8 +1,10 @@
 import React, { useCallback, useState } from "react";
+import { createFragmentContainer } from "react-relay";
+import graphql from "babel-plugin-relay/macro";
 import { Badge, ListGroup } from "reactstrap";
-import ItemContainer from "../containers/ItemContainer";
+import Item from "../Item/Item";
 
-const Items = ({ items }) => {
+export const ItemList = ({ items }) => {
   const [activeItem, setActiveItem] = useState();
   const onClick = useCallback(id => setActiveItem(id), []);
 
@@ -14,7 +16,7 @@ const Items = ({ items }) => {
       <ListGroup>
         {items &&
           items.map((item, index) => (
-            <ItemContainer
+            <Item
               isSelected={item.id === activeItem}
               item={item}
               key={item.id || index}
@@ -26,4 +28,11 @@ const Items = ({ items }) => {
   );
 };
 
-export default Items;
+export default createFragmentContainer(ItemList, {
+  items: graphql`
+    fragment ItemList_items on Agency @relay(plural: true) {
+      id
+      ...Item_item
+    }
+  `
+});

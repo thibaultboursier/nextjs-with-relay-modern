@@ -1,6 +1,8 @@
 import React, { useCallback, useState, useContext } from "react";
+import { createFragmentContainer, ReactRelayContext } from "react-relay";
+import graphql from "babel-plugin-relay/macro";
 import { ListGroupItem } from "reactstrap";
-import ItemQuery, { ItemQueryRenderer } from "../queries/itemQuery";
+import ItemQuery, { ItemQueryRenderer } from "./itemQuery";
 
 const Item = ({ item, isSelected, onClick }) => (
   <ListGroupItem
@@ -34,4 +36,12 @@ const Item = ({ item, isSelected, onClick }) => (
   </ListGroupItem>
 );
 
-export default Item;
+export default createFragmentContainer(Item, {
+  item: graphql`
+    fragment Item_item on Agency {
+      id
+      gtfsId
+      name
+    }
+  `
+});

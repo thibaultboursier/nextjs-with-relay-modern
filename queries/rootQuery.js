@@ -1,9 +1,9 @@
 import graphql from "babel-plugin-relay/macro";
 
 export const rootQuery = graphql`
-  query rootQueryQuery {
+  query rootQuery {
     agencies {
-      ...ItemsContainer_items
+      ...ItemList_items
     }
   }
 `;

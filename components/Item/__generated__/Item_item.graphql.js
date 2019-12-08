@@ -9,25 +9,25 @@
 /*::
 import type { ReaderFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
-declare export opaque type ItemContainer_item$ref: FragmentReference;
-declare export opaque type ItemContainer_item$fragmentType: ItemContainer_item$ref;
-export type ItemContainer_item = {|
+declare export opaque type Item_item$ref: FragmentReference;
+declare export opaque type Item_item$fragmentType: Item_item$ref;
+export type Item_item = {|
   +id: string,
   +gtfsId: string,
   +name: string,
-  +$refType: ItemContainer_item$ref,
+  +$refType: Item_item$ref,
 |};
-export type ItemContainer_item$data = ItemContainer_item;
-export type ItemContainer_item$key = {
-  +$data?: ItemContainer_item$data,
-  +$fragmentRefs: ItemContainer_item$ref,
+export type Item_item$data = Item_item;
+export type Item_item$key = {
+  +$data?: Item_item$data,
+  +$fragmentRefs: Item_item$ref,
 };
 */
 
 
 const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
-  "name": "ItemContainer_item",
+  "name": "Item_item",
   "type": "Agency",
   "metadata": null,
   "argumentDefinitions": [],
@@ -56,5 +56,5 @@ const node/*: ReaderFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = 'cf45fd2eea70b5bf69b240d666aaebad';
+(node/*: any*/).hash = 'ccbbb794844c03812b0aa70d4ffb6814';
 module.exports = node;

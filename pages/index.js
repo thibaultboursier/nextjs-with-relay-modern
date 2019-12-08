@@ -3,8 +3,8 @@ import graphql from "babel-plugin-relay/macro";
 import { ReactRelayContext } from "react-relay";
 import { Button, Jumbotron } from "reactstrap";
 import { withData } from "../relay/withData";
-import ItemsContainer from "../containers/ItemsContainer";
 import { rootQuery } from "../queries/rootQuery";
+import ItemList from "../components/ItemList/ItemList";
 
 const IndexPage = ({ agencies, operationToRetain }) => {
   const { environment } = useContext(ReactRelayContext);
@@ -37,7 +37,7 @@ const IndexPage = ({ agencies, operationToRetain }) => {
           </Button>
         </p>
       </Jumbotron>
-      <ItemsContainer items={agencies} />
+      <ItemList items={agencies} />
     </div>
   );
 };

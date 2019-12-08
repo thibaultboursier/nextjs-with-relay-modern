@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 6adea4430bdd2bda190d28e44745d119
+ * @relayHash 578efe0019d80884adc4b8638262582c
  */
 
 /* eslint-disable */
@@ -9,37 +9,37 @@
 
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
-type ItemsContainer_items$ref = any;
-export type rootQueryQueryVariables = {||};
-export type rootQueryQueryResponse = {|
+type ItemList_items$ref = any;
+export type rootQueryVariables = {||};
+export type rootQueryResponse = {|
   +agencies: ?$ReadOnlyArray<?{|
-    +$fragmentRefs: ItemsContainer_items$ref
+    +$fragmentRefs: ItemList_items$ref
   |}>
 |};
-export type rootQueryQuery = {|
-  variables: rootQueryQueryVariables,
-  response: rootQueryQueryResponse,
+export type rootQuery = {|
+  variables: rootQueryVariables,
+  response: rootQueryResponse,
 |};
 */
 
 
 /*
-query rootQueryQuery {
+query rootQuery {
   agencies {
-    ...ItemsContainer_items
+    ...ItemList_items
     id
   }
 }
 
-fragment ItemContainer_item on Agency {
+fragment ItemList_items on Agency {
+  id
+  ...Item_item
+}
+
+fragment Item_item on Agency {
   id
   gtfsId
   name
-}
-
-fragment ItemsContainer_items on Agency {
-  id
-  ...ItemContainer_item
 }
 */
 
@@ -47,7 +47,7 @@ const node/*: ConcreteRequest*/ = {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
-    "name": "rootQueryQuery",
+    "name": "rootQuery",
     "type": "QueryType",
     "metadata": null,
     "argumentDefinitions": [],
@@ -63,7 +63,7 @@ const node/*: ConcreteRequest*/ = {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "ItemsContainer_items",
+            "name": "ItemList_items",
             "args": null
           }
         ]
@@ -72,7 +72,7 @@ const node/*: ConcreteRequest*/ = {
   },
   "operation": {
     "kind": "Operation",
-    "name": "rootQueryQuery",
+    "name": "rootQuery",
     "argumentDefinitions": [],
     "selections": [
       {
@@ -111,12 +111,12 @@ const node/*: ConcreteRequest*/ = {
   },
   "params": {
     "operationKind": "query",
-    "name": "rootQueryQuery",
+    "name": "rootQuery",
     "id": null,
-    "text": "query rootQueryQuery {\n  agencies {\n    ...ItemsContainer_items\n    id\n  }\n}\n\nfragment ItemContainer_item on Agency {\n  id\n  gtfsId\n  name\n}\n\nfragment ItemsContainer_items on Agency {\n  id\n  ...ItemContainer_item\n}\n",
+    "text": "query rootQuery {\n  agencies {\n    ...ItemList_items\n    id\n  }\n}\n\nfragment ItemList_items on Agency {\n  id\n  ...Item_item\n}\n\nfragment Item_item on Agency {\n  id\n  gtfsId\n  name\n}\n",
     "metadata": {}
   }
 };
 // prettier-ignore
-(node/*: any*/).hash = '2a612f6201ee1afecab7bd65be9602a5';
+(node/*: any*/).hash = 'bf4e9854c02f685db6ba783f4a162c1e';
 module.exports = node;
